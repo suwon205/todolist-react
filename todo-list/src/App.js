@@ -1,4 +1,4 @@
-import Content from "./Content";
+import Content from "./TodoList";
 import "./App.css";
 import Navbar from "./Navbar";
 import "./css/app-css.css";

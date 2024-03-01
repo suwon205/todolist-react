@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import "../css/input-css.css";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../store/todo-reducer";
 
 export default function InputBar() {
-  const [inputData, setData] = useState("");
-  const handleInput = (e) => {
-    setData(e.target.value);
-  };
+  const [inputData, setInputData] = useState("");
+  const dispatch = useDispatch(); // 디스패치 함수를 가져옴
+
   const handleAdd = () => {
-    console.log(`${inputData}를 추가합니다.`);
-    setData("");
+    dispatch(addTodo(inputData));
+    setInputData(""); // 입력 폼 초기화
   };
   return (
     <div className="input-bar">
@@ -18,7 +19,7 @@ export default function InputBar() {
         id=""
         className="input-text"
         value={inputData}
-        onChange={handleInput}
+        onChange={(e) => setInputData(e.target.value)}
       />
       <div onClick={handleAdd}>+</div>
     </div>
