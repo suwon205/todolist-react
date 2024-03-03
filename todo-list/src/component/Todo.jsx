@@ -16,7 +16,6 @@ export default function Todo({ content }) {
     dispatch(editTodoState(content.id, newState ? "DONE" : "NOT_STARTED"));
   };
   const handleDelete = () => {
-    console.log(content.id);
     dispatch(deleteTodo(content.id));
   };
   return (
