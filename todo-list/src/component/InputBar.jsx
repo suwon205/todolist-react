@@ -8,8 +8,12 @@ export default function InputBar() {
   const dispatch = useDispatch(); // 디스패치 함수를 가져옴
 
   const handleAdd = () => {
-    dispatch(addTodo(inputData));
-    setInputData(""); // 입력 폼 초기화
+    if (inputData.length === 0 || inputData === undefined) {
+      alert("데이터를 입력해 주세요!");
+    } else {
+      dispatch(addTodo(inputData));
+      setInputData(""); // 입력 폼 초기화
+    }
   };
   return (
     <div className="input-bar">
