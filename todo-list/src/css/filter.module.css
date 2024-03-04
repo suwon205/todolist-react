@@ -1,0 +1,25 @@
+.active {
+  margin: auto;
+  background-color: aliceblue;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.disabled {
+  margin: auto;
+  padding: 5px;
+}
+
+.filters {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-style: normal;
+  display: flex;
+  width: 230px;
+  justify-content: space-between;
+  margin-right: 20px;
+  font-weight: 700;
+}
+
+.filter-area {
+  margin-top: 10px;
+}

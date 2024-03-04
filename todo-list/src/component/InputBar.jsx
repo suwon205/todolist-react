@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "../css/input-css.css";
+import styles from "../css/input.module.css";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../store/todo-reducer";
+import { FaPlus } from "react-icons/fa";
 
 export default function InputBar() {
   const [inputData, setInputData] = useState("");
@@ -16,16 +17,14 @@ export default function InputBar() {
     }
   };
   return (
-    <div className="input-bar">
+    <div className={styles["input-container"]}>
       <input
         type="text"
-        name=""
-        id=""
-        className="input-text"
+        className={styles["input-text"]}
         value={inputData}
         onChange={(e) => setInputData(e.target.value)}
       />
-      <div onClick={handleAdd}>+</div>
+      <FaPlus onClick={handleAdd} className={styles.icon} />
     </div>
   );
 }

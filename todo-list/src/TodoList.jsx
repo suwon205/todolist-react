@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import "./css/content-css.css";
+import styles from "./css/content.module.css";
 import Todo from "./component/Todo";
 
 export default function Content() {
@@ -18,7 +18,7 @@ export default function Content() {
   });
 
   return (
-    <div className="content">
+    <div className={styles.background}>
       {filteredTodos !== undefined &&
         filteredTodos.length > 0 &&
         filteredTodos.map((todo) => <Todo key={todo.id} content={todo} />)}

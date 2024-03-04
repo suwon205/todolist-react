@@ -1,12 +1,12 @@
 import Content from "./TodoList";
 import "./App.css";
 import Navbar from "./Navbar";
-import "./css/app-css.css";
+import styles from "./css/app.module.css";
 import InputBar from "./component/InputBar";
 function App() {
   return (
     <div>
-      <div className="app">
+      <div className={styles.app}>
         <Navbar />
         <Content />
         <InputBar />

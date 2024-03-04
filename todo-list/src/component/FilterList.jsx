@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/filtercss.css";
+import styles from "../css/filter.module.css";
 import { useDispatch } from "react-redux";
 import {
   filterAll,
@@ -34,18 +34,28 @@ export default function FilterList() {
   };
 
   return (
-    <div className="filter">
-      <div
-        onClick={() => handleFilter(filterTypes.NOT_STARTED)}
-        className={filterType === filterTypes.NOT_STARTED ? "active" : ""}
-      >
-        Not Started
+    <div className={styles.filters}>
+      <div className={styles["filter-area"]}>
+        <div
+          onClick={() => handleFilter(filterTypes.NOT_STARTED)}
+          className={
+            filterType === filterTypes.NOT_STARTED
+              ? styles.active
+              : styles.disabled
+          }
+        >
+          NOT STARTED
+        </div>
       </div>
-      <div
-        onClick={() => handleFilter(filterTypes.DONE)}
-        className={filterType === filterTypes.DONE ? "active" : ""}
-      >
-        Done
+      <div className={styles["filter-area"]}>
+        <div
+          onClick={() => handleFilter(filterTypes.DONE)}
+          className={
+            filterType === filterTypes.DONE ? styles.active : styles.disabled
+          }
+        >
+          COMPLETED
+        </div>
       </div>
     </div>
   );

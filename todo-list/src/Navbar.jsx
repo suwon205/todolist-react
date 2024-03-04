@@ -1,11 +1,11 @@
 import React from "react";
-import ThemeChange from "./component/ThemeChange";
+import Theme from "./component/Theme";
 import FilterList from "./component/FilterList";
-import "./css/navbar-css.css";
+import styles from "./css/navbar.module.css";
 export default function Navbar() {
   return (
-    <div className="navbar">
-      <ThemeChange />
+    <div className={styles.navbar}>
+      <Theme />
       <FilterList />
     </div>
   );

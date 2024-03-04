@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteTodo, editTodoState } from "../store/todo-reducer";
-import "../css/content-css.css";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
+
+import {
+  deleteTodo,
+  editTodoContent,
+  editTodoState,
+} from "../store/todo-reducer";
+import styles from "../css/content.module.css";
+import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 
 export default function Todo({ content }) {
   const [isDone, setIsDone] = useState(false);
@@ -18,13 +25,34 @@ export default function Todo({ content }) {
   const handleDelete = () => {
     dispatch(deleteTodo(content.id));
   };
+
+  const handleUpdate = () => {
+    let newContent = prompt("수정할 내용을 입력하세요.");
+    if (newContent === null || newContent === undefined) {
+      return;
+    }
+    dispatch(editTodoContent(content.id, newContent));
+  };
   return (
-    <div className="todo-container">
-      <div onClick={handleTodo}>
-        <input type="checkbox" checked={isDone} readOnly />
-        <p>Content: {content.content}</p>
+    <div className={styles["todo-container"]}>
+      <div className={styles.content}>
+        <div className={styles.icon} onClick={handleTodo}>
+          {isDone ? (
+            <MdCheckBox className={styles.checked} />
+          ) : (
+            <MdCheckBoxOutlineBlank />
+          )}
+        </div>
+        <div style={{ width: "300px", margin: "auto" }}>
+          <p style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
+            {content.content}
+          </p>
+        </div>
       </div>
-      <button onClick={handleDelete}>삭제하기</button>
+      <div className={styles.buttons}>
+        <FiEdit onClick={handleUpdate} className={styles["select-icon"]} />
+        <FiTrash2 onClick={handleDelete} className={styles["select-icon"]} />
+      </div>
     </div>
   );
 }

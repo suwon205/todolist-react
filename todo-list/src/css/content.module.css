@@ -1,0 +1,54 @@
+.background {
+  background-color: aliceblue;
+  height: 500px;
+  overflow: auto;
+}
+.todo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(255, 252, 248);
+  margin: 5px;
+  border-radius: 10px;
+}
+.icon {
+  display: flex;
+  align-items: center;
+  /* 아이콘의 크기는 폰트 사이즈로 조정 가능 */
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  color: #adb5bd;
+  cursor: pointer;
+}
+
+.checked {
+  color: #339af0;
+}
+
+.content {
+  display: flex;
+  margin-left: 10px;
+}
+
+.buttons {
+  justify-content: space-between;
+  display: flex;
+  /* margin-top: 10px; 버튼들 사이의 간격 조절 */
+  cursor: pointer;
+  margin: auto;
+  width: 80px;
+  /* margin-right: 10px;
+  margin-bottom: 5px; 버튼들 사이의 간격 조절 */
+}
+.text {
+  overflow-wrap: break-word; /* 텍스트가 콘텐츠 박스를 넘어갈 경우 줄바꿈되도록 설정 */
+  /* white-space: nowrap; */
+}
+.select-icon {
+  display: flex;
+  align-items: center;
+  /* 아이콘의 크기는 폰트 사이즈로 조정 가능 */
+  font-size: 1.7rem;
+  margin-right: 0.5rem;
+  color: #63676b;
+}
