@@ -44,7 +44,14 @@ export default function Todo({ content }) {
           )}
         </div>
         <div style={{ width: "300px", margin: "auto" }}>
-          <p style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
+          <p
+            style={{
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
+              fontFamily: "'IBM Plex Sans KR', sans-serif",
+              fontWeight: "600",
+            }}
+          >
             {content.content}
           </p>
         </div>
