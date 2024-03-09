@@ -1,22 +1,28 @@
-import React, { useState } from "react";
-import { CiDark } from "react-icons/ci";
-import { MdOutlineLightMode } from "react-icons/md";
+import React from "react";
 import styles from "../css/navbar.module.css";
+import { DarkModeSwitch } from "react-toggle-dark-mode";
+import { useDispatch, useSelector } from "react-redux";
+import { exchangeMode } from "../store/theme-reducer";
 
 export default function Theme() {
-  const [isDark, setDark] = useState(false);
+  const dispatch = useDispatch();
+  const isDarkMode = useSelector((state) => state.themeReducer.isDarkMode);
 
-  const handleMode = () => {
-    setDark(!isDark); // 상태를 반전시켜 업데이트
+  const toggleDarkMode = () => {
+    localStorage.setItem("isLightmode", isDarkMode);
+    dispatch(exchangeMode(isDarkMode));
   };
-
   return (
     <div>
-      {!isDark ? (
-        <MdOutlineLightMode onClick={handleMode} className={styles.icon} />
-      ) : (
-        <CiDark onClick={handleMode} className={styles.icon} />
-      )}
+      <DarkModeSwitch
+        checked={!isDarkMode}
+        onChange={toggleDarkMode}
+        size={40}
+        className={styles.icon}
+        moonColor="black"
+        sunColor="white"
+        animationProperties={{}}
+      />
     </div>
   );
 }

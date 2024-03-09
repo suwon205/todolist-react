@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../css/filter.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   filterAll,
   filterDone,
@@ -8,17 +8,15 @@ import {
 } from "../store/filter-reducer";
 
 export default function FilterList() {
-  const [filterType, setFilterType] = useState(null); // 선택된 필터 타입을 상태로 관리
+  const [filterType, setFilterType] = useState(null);
+  const isDarkMode = useSelector((state) => state.themeReducer.isDarkMode);
   const dispatch = useDispatch();
 
-  // 필터링을 설정하는 함수
   const handleFilter = (filter) => {
-    // 선택된 필터와 현재 필터 타입을 비교하여 동일하면 전체 필터로 설정
     if (filterType === filter) {
       setFilterType(null);
       dispatch(filterAll());
     } else {
-      // 선택된 필터를 설정하고 해당 필터에 맞는 액션을 디스패치
       setFilterType(filter);
       switch (filter) {
         case filterTypes.NOT_STARTED:
@@ -37,24 +35,64 @@ export default function FilterList() {
     <div className={styles.filters}>
       <div className={styles["filter-area"]}>
         <div
-          onClick={() => handleFilter(filterTypes.NOT_STARTED)}
-          className={
-            filterType === filterTypes.NOT_STARTED
-              ? styles.active
-              : styles.disabled
-          }
+          className={`${
+            filterType === "NOT_STARTED" && isDarkMode
+              ? styles.chooseDarkArea
+              : ""
+          } ${
+            filterType === "NOT_STARTED" && !isDarkMode
+              ? styles.chooseLightArea
+              : ""
+          }`}
         >
-          NOT STARTED
+          <div
+            onClick={() => handleFilter(filterTypes.NOT_STARTED)}
+            className={`
+            ${
+              filterType === "NOT_STARTED" && isDarkMode
+                ? styles.chooseDark
+                : ""
+            }
+            ${
+              filterType === "NOT_STARTED" && !isDarkMode
+                ? styles.chooseLight
+                : ""
+            }
+            ${
+              filterType !== "NOT_STARTED" && isDarkMode
+                ? styles.disabledDark
+                : ""
+            }
+            ${
+              filterType !== "NOT_STARTED" && !isDarkMode
+                ? styles.disabledLight
+                : ""
+            }
+          `}
+          >
+            NOT STARTED
+          </div>
         </div>
       </div>
       <div className={styles["filter-area"]}>
         <div
-          onClick={() => handleFilter(filterTypes.DONE)}
-          className={
-            filterType === filterTypes.DONE ? styles.active : styles.disabled
-          }
+          className={`${
+            filterType === "DONE" && isDarkMode ? styles.chooseDarkArea : ""
+          } ${
+            filterType === "DONE" && !isDarkMode ? styles.chooseLightArea : ""
+          }`}
         >
-          COMPLETED
+          <div
+            onClick={() => handleFilter(filterTypes.DONE)}
+            className={`
+          ${filterType === "DONE" && isDarkMode ? styles.chooseDark : ""}
+          ${filterType === "DONE" && !isDarkMode ? styles.chooseLight : ""}
+          ${filterType !== "DONE" && isDarkMode ? styles.disabledDark : ""}
+          ${filterType !== "DONE" && !isDarkMode ? styles.disabledLight : ""}
+          `}
+          >
+            COMPLETED
+          </div>
         </div>
       </div>
     </div>

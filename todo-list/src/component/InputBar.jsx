@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import styles from "../css/input.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from "../store/todo-reducer";
 import { FaPlus } from "react-icons/fa";
 
 export default function InputBar() {
   const [inputData, setInputData] = useState("");
   const dispatch = useDispatch(); // 디스패치 함수를 가져옴
+  const isDarkMode = useSelector((state) => state.themeReducer.isDarkMode);
 
   const handleAdd = () => {
     if (inputData.length === 0 || inputData === undefined) {
@@ -17,14 +18,23 @@ export default function InputBar() {
     }
   };
   return (
-    <div className={styles["input-container"]}>
+    <div
+      className={
+        isDarkMode
+          ? styles["input-dark-container"]
+          : styles["input-light-container"]
+      }
+    >
       <input
         type="text"
         className={styles["input-text"]}
         value={inputData}
         onChange={(e) => setInputData(e.target.value)}
       />
-      <FaPlus onClick={handleAdd} className={styles.icon} />
+      <FaPlus
+        onClick={handleAdd}
+        className={isDarkMode ? styles["dark-icon"] : styles["light-icon"]}
+      />
     </div>
   );
 }

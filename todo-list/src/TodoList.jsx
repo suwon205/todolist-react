@@ -6,6 +6,7 @@ import Todo from "./component/Todo";
 export default function Content() {
   const todos = useSelector((state) => state.todoReducer);
   const filterType = useSelector((state) => state.filterReducer.filterType);
+  const isDarkMode = useSelector((state) => state.themeReducer.isDarkMode);
 
   const filteredTodos = todos.filter((todo) => {
     if (filterType === "DONE") {
@@ -18,7 +19,9 @@ export default function Content() {
   });
 
   return (
-    <div className={styles.background}>
+    <div
+      className={isDarkMode ? styles.darkBackground : styles.lightBackground}
+    >
       {filteredTodos !== undefined &&
         filteredTodos.length > 0 &&
         filteredTodos.map((todo) => <Todo key={todo.id} content={todo} />)}

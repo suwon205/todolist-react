@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
-
 import {
   deleteTodo,
   editTodoContent,
@@ -13,6 +12,7 @@ import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 export default function Todo({ content }) {
   const [isDone, setIsDone] = useState(false);
   const dispatch = useDispatch();
+  const isDarkMode = useSelector((state) => state.themeReducer.isDarkMode);
 
   useEffect(() => {
     setIsDone(content.completed);
@@ -34,11 +34,26 @@ export default function Todo({ content }) {
     dispatch(editTodoContent(content.id, newContent));
   };
   return (
-    <div className={styles["todo-container"]}>
-      <div className={styles.content}>
-        <div className={styles.icon} onClick={handleTodo}>
+    <div
+      className={
+        isDarkMode
+          ? styles["todo-dark-container"]
+          : styles["todo-light-container"]
+      }
+    >
+      <div
+        className={`${styles.content} ${
+          isDarkMode ? styles.darkText : styles.lightText
+        }`}
+      >
+        <div
+          className={isDarkMode ? styles.darkIcon : styles.lightIcon}
+          onClick={handleTodo}
+        >
           {isDone ? (
-            <MdCheckBox className={styles.checked} />
+            <MdCheckBox
+              className={isDarkMode ? styles.darkChecked : styles.checked}
+            />
           ) : (
             <MdCheckBoxOutlineBlank />
           )}
@@ -56,9 +71,24 @@ export default function Todo({ content }) {
           </p>
         </div>
       </div>
+
       <div className={styles.buttons}>
-        <FiEdit onClick={handleUpdate} className={styles["select-icon"]} />
-        <FiTrash2 onClick={handleDelete} className={styles["select-icon"]} />
+        <FiEdit
+          onClick={handleUpdate}
+          className={
+            isDarkMode
+              ? styles["select-dark-icon"]
+              : styles["select-light-icon"]
+          }
+        />
+        <FiTrash2
+          onClick={handleDelete}
+          className={
+            isDarkMode
+              ? styles["select-dark-icon"]
+              : styles["select-light-icon"]
+          }
+        />
       </div>
     </div>
   );

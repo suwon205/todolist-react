@@ -1,9 +1,14 @@
-.background {
+.lightBackground {
   background-color: aliceblue;
   height: 500px;
   overflow: auto;
 }
-.todo-container {
+.darkBackground {
+  background-color: rgb(80, 80, 80);
+  height: 500px;
+  overflow: auto;
+}
+.todo-light-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -11,7 +16,15 @@
   margin: 5px;
   border-radius: 10px;
 }
-.icon {
+.todo-dark-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(120, 120, 120);
+  margin: 5px;
+  border-radius: 10px;
+}
+.lightIcon {
   display: flex;
   align-items: center;
   /* 아이콘의 크기는 폰트 사이즈로 조정 가능 */
@@ -20,9 +33,21 @@
   color: #adb5bd;
   cursor: pointer;
 }
+.darkIcon {
+  display: flex;
+  align-items: center;
+  /* 아이콘의 크기는 폰트 사이즈로 조정 가능 */
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  color: #cccccc;
+  cursor: pointer;
+}
 
 .checked {
   color: #339af0;
+}
+.darkChecked {
+  color: #b5b5b5;
 }
 
 .content {
@@ -44,11 +69,26 @@
   overflow-wrap: break-word; /* 텍스트가 콘텐츠 박스를 넘어갈 경우 줄바꿈되도록 설정 */
   /* white-space: nowrap; */
 }
-.select-icon {
+.select-light-icon {
   display: flex;
   align-items: center;
   /* 아이콘의 크기는 폰트 사이즈로 조정 가능 */
   font-size: 1.7rem;
   margin-right: 0.5rem;
   color: #63676b;
+}
+.select-dark-icon {
+  display: flex;
+  align-items: center;
+  /* 아이콘의 크기는 폰트 사이즈로 조정 가능 */
+  font-size: 1.7rem;
+  margin-right: 0.5rem;
+  color: #b8b8b8;
+}
+
+.lightText {
+  color: #515151;
+}
+.darkText {
+  color: #e0e0e0;
 }

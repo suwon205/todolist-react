@@ -1,14 +1,17 @@
-.navbar {
+.Lightbar {
   display: flex;
   justify-content: space-between;
   background-color: rgb(206, 231, 255);
 }
+.Darkbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(154, 154, 154);
+}
 
 .icon {
-  font-size: 2rem;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 7px;
+  margin-bottom: 7px;
   margin-left: 10px;
   cursor: pointer;
-  color: #444444;
 }

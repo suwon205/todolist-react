@@ -1,4 +1,9 @@
-.input-container {
+.input-dark-container {
+  background-color: rgb(144, 144, 144);
+  display: flex;
+  height: 80px;
+}
+.input-light-container {
   background-color: rgb(206, 231, 255);
   display: flex;
   height: 80px;
@@ -19,13 +24,23 @@
   margin: 0.5rem; /* 넘치는 텍스트의 마진 설정 */
 }
 
-.icon {
+.light-icon {
   display: flex;
   align-items: center;
   /* 아이콘의 크기는 폰트 사이즈로 조정 가능 */
   font-size: 1.7rem;
   /* margin-right: 0.5rem; */
-  color: #414446;
+  color: #4d5fa2;
+  cursor: pointer;
+  margin: auto; /* 아이콘을 수직 가운데 정렬 */
+}
+.dark-icon {
+  display: flex;
+  align-items: center;
+  /* 아이콘의 크기는 폰트 사이즈로 조정 가능 */
+  font-size: 1.7rem;
+  /* margin-right: 0.5rem; */
+  color: #ababab;
   cursor: pointer;
   margin: auto; /* 아이콘을 수직 가운데 정렬 */
 }
