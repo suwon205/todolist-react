@@ -28,10 +28,12 @@ export default function Todo({ content }) {
 
   const handleUpdate = () => {
     let newContent = prompt("수정할 내용을 입력하세요.");
-    if (newContent === null || newContent === undefined) {
-      return;
+    const newStr = newContent.trim();
+    if (newStr.length === 0 || newStr === undefined) {
+      alert("데이터를 입력해 주세요!");
+    } else {
+      dispatch(editTodoContent(content.id, newStr));
     }
-    dispatch(editTodoContent(content.id, newContent));
   };
   return (
     <div

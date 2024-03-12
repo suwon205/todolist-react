@@ -10,10 +10,11 @@ export default function InputBar() {
   const isDarkMode = useSelector((state) => state.themeReducer.isDarkMode);
 
   const handleAdd = () => {
-    if (inputData.length === 0 || inputData === undefined) {
+    const newStr = inputData.trim();
+    if (newStr.length === 0 || newStr === undefined) {
       alert("데이터를 입력해 주세요!");
     } else {
-      dispatch(addTodo(inputData));
+      dispatch(addTodo(newStr));
       setInputData(""); // 입력 폼 초기화
     }
   };
