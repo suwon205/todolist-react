@@ -2,12 +2,12 @@ export const DARK = "theme/DARK";
 export const LIGHT = "theme/LIGHT";
 
 export const exchangeMode = (isDark) => ({
-  type: isDark ? LIGHT : DARK,
+  type: isDark ? DARK : LIGHT,
   // 기존에 다크모드였을 경우 라이트 모드 전환, 그렇지 않은 경우 다크모드 전환
 });
 
 const initialState = {
-  isDarkMode: localStorage.getItem("isLightmode") === "true" ? true : false,
+  isDarkMode: localStorage.getItem("isDarkMode") === "true" ? true : false,
 };
 
 const themeReducer = (state = initialState, action) => {

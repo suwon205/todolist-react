@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../css/navbar.module.css";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,8 +9,10 @@ export default function Theme() {
   const isDarkMode = useSelector((state) => state.themeReducer.isDarkMode);
 
   const toggleDarkMode = () => {
-    localStorage.setItem("isLightmode", isDarkMode);
-    dispatch(exchangeMode(isDarkMode));
+    const newMode = !isDarkMode;
+    console.log(newMode);
+    localStorage.setItem("isDarkMode", newMode);
+    dispatch(exchangeMode(newMode));
   };
   return (
     <div>
