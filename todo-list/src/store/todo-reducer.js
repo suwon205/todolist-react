@@ -1,4 +1,5 @@
 // reducers/todo.js
+import { v4 as uuidv4 } from "uuid";
 
 // 액션 타입 상수 정의
 export const ADD_TODO = "todo/ADD_TODO";
@@ -27,7 +28,7 @@ export const editTodoContent = (id, content) => ({
   payload: { id, content },
 });
 
-let lastIdx = 0;
+// let lastIdx = 0;
 // 초기 데이터 정의
 const initialState = JSON.parse(localStorage.getItem("todos")) || [];
 
@@ -36,11 +37,12 @@ const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
       const newData = {
-        id: lastIdx,
+        id: uuidv4(),
         completed: false,
         content: action.payload.content,
       };
-      lastIdx += 1;
+      // lastIdx += 1;
+
       const newStateAfterAdd = [...state, newData];
       localStorage.setItem("todos", JSON.stringify(newStateAfterAdd)); // 데이터 추가 후 로컬 스토리지에 저장
       return newStateAfterAdd; // 기존 데이터에 새로운 데이터 추가

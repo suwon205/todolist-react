@@ -53,6 +53,7 @@
 .content {
   display: flex;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .buttons {

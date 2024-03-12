@@ -30,6 +30,7 @@ export default function InputBar() {
         className={styles["input-text"]}
         value={inputData}
         onChange={(e) => setInputData(e.target.value)}
+        placeholder="할 일을 입력해주세요"
       />
       <FaPlus
         onClick={handleAdd}

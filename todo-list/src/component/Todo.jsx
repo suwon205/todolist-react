@@ -45,11 +45,10 @@ export default function Todo({ content }) {
         className={`${styles.content} ${
           isDarkMode ? styles.darkText : styles.lightText
         }`}
+        onClick={handleTodo}
       >
-        <div
-          className={isDarkMode ? styles.darkIcon : styles.lightIcon}
-          onClick={handleTodo}
-        >
+        <div className={isDarkMode ? styles.darkIcon : styles.lightIcon}>
+          {/* onClick={handleTodo} */}
           {isDone ? (
             <MdCheckBox
               className={isDarkMode ? styles.darkChecked : styles.checked}
